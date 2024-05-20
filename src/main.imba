@@ -2,6 +2,7 @@ import'./ui-button.imba'
 import'./ui-circle.imba'
 import'./ui-carousel.imba'
 import'./ui-modal.imba'
+import'./ui-magnify.imba'
 
 import imgUrl from './imba.webp'
 
@@ -42,6 +43,8 @@ tag LoginModal < ui-modal
 
 tag App
 	<self>
+		<ui-magnify scale=1>
+			<img src='https://placedog.net/200/200'>
 		<button @click=(imba.mount <DemoCarousel>) [mb:2] > "Show Carousel"
 		<ui-button @click=(imba.mount new <LoginModal>)> "Show Login Modal"
 		<DemoCircle route='/circle'>
