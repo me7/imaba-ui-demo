@@ -1,6 +1,7 @@
 import'./ui-button.imba'
 import'./ui-circle.imba'
 import'./ui-carousel.imba'
+import'./ui-modal.imba'
 
 import imgUrl from './imba.webp'
 
@@ -29,10 +30,21 @@ tag DemoCarousel
 	<self>
 		<ui-carousel data=imgList>
 
+tag LoginModal < ui-modal
+	def submit
+		console.log "Logging in..."
+
+	def body
+		<div>
+			<h2> "This is a modal"
+			<ui-button@click=submit> "Log In"
+			<ui-button@click=cancel> "Cancel"
+
 tag App
 	<self>
-		<button @click=imba.mount(<DemoCarousel>) [mb:2] > "Show Carousel"
-		<DemoCircle>
-		<DemoButton>
+		<button @click=(imba.mount <DemoCarousel>) [mb:2] > "Show Carousel"
+		<ui-button @click=(imba.mount new <LoginModal>)> "Show Login Modal"
+		<DemoCircle route='/circle'>
+		<DemoButton route='/'>
 
 imba.mount <App>
