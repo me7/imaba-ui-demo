@@ -9,5 +9,8 @@
   "devDependencies": {
     "imba": "*",
     "vite": "*"
+  },
+  "dependencies": {
+    "imba-material-icons": "^0.2.3"
   }
 }
