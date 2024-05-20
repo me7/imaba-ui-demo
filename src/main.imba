@@ -3,6 +3,7 @@ import'./ui-circle.imba'
 import'./ui-carousel.imba'
 import'./ui-modal.imba'
 import'./ui-magnify.imba'
+import'./ui-select.imba'
 
 import imgUrl from './imba.webp'
 
@@ -42,12 +43,31 @@ tag LoginModal < ui-modal
 			<ui-button@click=cancel> "Cancel"
 
 tag App
+	items = ['apple','banaba','orange']
+	item = items[0]
+		
 	<self>
-		<ui-magnify scale=1>
-			<img src='https://placedog.net/200/200'>
-		<button @click=(imba.mount <DemoCarousel>) [mb:2] > "Show Carousel"
-		<ui-button @click=(imba.mount new <LoginModal>)> "Show Login Modal"
-		<DemoCircle route='/circle'>
-		<DemoButton route='/'>
+		<ul>
+			<li> <a href='/'> "Home"
+			<li> <a href='/advance'> "Advance"
+		<div route='/advance'>
+			<h2> "ui-select"
+			<button bind=item @click.select(items)> item
+			<hr>
+			<h2> "ui-magnify"
+			<ui-magnify scale=1>
+				<img src='https://placedog.net/200/200'>
+			<h2> "ui-modal"
+			<ui-button @click=(imba.mount new <LoginModal>)> "Show Login Modal"
+			<hr>
+		<div route='/'>
+			<h3> "ui-button"
+			<DemoButton route='/'>
+			<hr>
+			<h2> "ui-circle"
+			<DemoCircle>
+			<hr>
+			<h2> "ui-carousel"
+			<button @click=(imba.mount <DemoCarousel>) [mb:2] > "Show Carousel"
 
 imba.mount <App>
